@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const users = {
+        Alex: {
+          email: "alex@alex.com",
+          skills: ["HTML", "CSS", "JavaScript"],
+          age: 20,
+          isLoggedIn: false,
+          points: 30,
+        },
+        Asab: {
+          email: "asab@asab.com",
+          skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Redux",
+            "MongoDB",
+            "Express",
+            "React",
+            "Node",
+          ],
+          age: 25,
+          isLoggedIn: false,
+          points: 50,
+        },
+        Brook: {
+          email: "daniel@daniel.com",
+          skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
+          age: 30,
+          isLoggedIn: true,
+          points: 50,
+        },
+        Daniel: {
+          email: "daniel@alex.com",
+          skills: ["HTML", "CSS", "JavaScript", "Python"],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+        John: {
+          email: "john@john.com",
+          skills: ["HTML", "CSS", "JavaScript", "React", "Redux", "Node.js"],
+          age: 20,
+          isLoggedIn: true,
+          points: 50,
+        },
+        Thomas: {
+          email: "thomas@thomas.com",
+          skills: ["HTML", "CSS", "JavaScript", "React"],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+        Paul: {
+          email: "paul@paul.com",
+          skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "MongoDB",
+            "Express",
+            "React",
+            "Node",
+          ],
+          age: 20,
+          isLoggedIn: false,
+          points: 40,
+        },
+      };
+
+      let nameList = Object.keys(users);
+
+      function findPersonManySkills() {
+        let username = "";
+        let maxSkills = 0;
+        for (name of nameList) {
+          let skillLen = users[name].skills.length;
+          if (maxSkills < skillLen) {
+            username = name;
+            maxSkills = skillLen;
+          }
+        }
+        console.log("The person who has many skills is", username);
+      }
+      findPersonManySkills();
+
+      function countLoggedInUsers() {
+        let count = 0;
+        for (name of nameList) {
+          count = users[name].isLoggedIn ? count + 1 : count;
+        }
+        console.log("The total of logged in users is", count);
+      }
+      countLoggedInUsers();
+
+      function countGTE50Points() {
+        let count = 0;
+        for (name of nameList) {
+          count += users[name].points >= 50 ? 1 : 0;
+        }
+        console.log(
+          "The total of users having greater thann equal to 50 points is",
+          count
+        );
+      }
+      countGTE50Points();
+
+      let filterSkill = "MERN";
+      function checkSkill(skillName) {
+        return skillName == filterSkill;
+      }
+      function findWithSkills(skillName) {
+        let username = "";
+        for (name of nameList) {
+          let skillList = users[name].skills;
+          username = skillList.find(checkSkill) ? name : "-";
+        }
+        console.log(username);
+      }
+      findWithSkills();
+
+      let copyUsers = Object.assign({}, users);
+      copyUsers["EEK"] = {
+        email: "eek@eek.com",
+        skills: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "MySQL",
+          "PostgreSQL",
+          "Java",
+          "Spring",
+        ],
+        age: 27,
+        isLoggedIn: true,
+        points: 80,
+      };
+      console.log(copyUsers);
+      console.log(Object.keys(copyUsers));
+      console.log(Object.values(copyUsers));
+    </script>
+  </body>
+</html>

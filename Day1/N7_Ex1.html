@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N7_Ex1</title>
+</head>
+<body>
+    <script>
+        let dog = {};
+        console.log(dog);
+        dog.name = 'Whu';
+        dog.legs = 4;
+        dog.color = 'Brown';
+        dog.age = 2;
+        dog.bark = function(){
+            return 'woof woof';
+        };
+        console.log(dog.name, dog.legs, dog.color, dog.age, dog.bark());
+        dog.getDogInfo = function(){
+            return dog.name + ':' + dog.legs + ':' + dog.color + ':' + dog.age + ':' + dog.bark();
+        }
+        console.log(dog.getDogInfo());
+    </script>
+</body>
+</html>
