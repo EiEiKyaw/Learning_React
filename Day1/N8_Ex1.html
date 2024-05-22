@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getFullName(firstName, lastName) {
+        return `${firstName} ${lastName}`;
+      }
+
+      function addNumbers(firstNum, secNum) {
+        return firstNum + secNum;
+      }
+
+      function calculateAreaOfCircle(r) {
+        return 3.142 * r * r;
+      }
+
+      function convertCelciusToFahrenheit(celcius) {
+        return (celcius * 9) / 5 + 32;
+      }
+
+      function calculateBMI(kg, height) {
+        let bmi = (kg / ((height * height) / 10000)).toFixed(2);
+        let checkBmi =
+          bmi < 18.5
+            ? 1
+            : bmi >= 18.5 && bmi <= 24.9
+            ? 2
+            : bmi <= 25 && bmi >= 29.9
+            ? 3
+            : 4;
+        switch (checkBmi) {
+          case 1:
+            console.log("Underweight");
+            break;
+          case 2:
+            console.log("Normal weight");
+            break;
+          case 3:
+            console.log("Overweight");
+            break;
+          default:
+            console.log("Obses");
+            break;
+        }
+      }
+
+      function checkSeason(month) {
+        let checkMonth =
+          month > 2 && month < 6
+            ? 1
+            : month > 5 && month < 9
+            ? 2
+            : month > 8 && month < 12
+            ? 3
+            : 4;
+        switch (checkMonth) {
+          case 1:
+            return "Spring";
+          case 2:
+            return "Summer";
+          case 3:
+            return "Autumn";
+          default:
+            return "Winter";
+        }
+      }
+
+      console.log(getFullName("Ei Ei", "Kyaw"));
+      console.log(addNumbers(3, 5));
+      console.log(calculateAreaOfCircle(4));
+      console.log(convertCelciusToFahrenheit(30));
+      calculateBMI(58, 154.94);
+      console.log(checkSeason(5));
+    </script>
+  </body>
+</html>

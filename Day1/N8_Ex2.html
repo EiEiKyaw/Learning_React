@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let printArray = (...arr) => {
+        for (const a of arr) {
+          console.log(a);
+        }
+      };
+      printArray([1, 2, 3, 4]);
+      printArray([1, 2]);
+
+      let showDateTime = (date) => {
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          day: "numeric",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        return formatter.format(date);
+      };
+      console.log(showDateTime(new Date()));
+
+      function swapValues(x, y) {
+        console.log(`Before => ${x}, ${y}`);
+        let [a, b] = [y, x];
+        console.log(`After => ${a}, ${b}`);
+      }
+      swapValues(2, 3);
+
+      let reverseArray = (arr) => {
+        console.log("Before => ", arr);
+        console.log("After => ", arr.reverse());
+      };
+      reverseArray([1, 2, 3, 4, 5]);
+      reverseArray(["A", "B", "C"]);
+
+      let capitalizeArray = (arr) => {
+        return arr.map((a) => a.toUpperCase());
+      };
+      console.log(capitalizeArray(["a", "b", "c"]));
+
+      let addItem = (newItem, arr) => {
+        arr.push(newItem);
+        return arr;
+      };
+      console.log(addItem(5, [1, 2, 3, 4]));
+
+      let removeItem = (index, arr) => {
+        console.log("Before => ", arr);
+        for (const i in arr) {
+          if (i == index) {
+            arr.splice(i, 1);
+          }
+        }
+        return arr;
+      };
+      console.log("After => ", removeItem(2, [1, 2, 3, 3, 4, 5]));
+
+      let filterArr = (index, arr) => {
+        return arr.filter((i) => arr.indexOf(i) != index);
+      };
+      console.log("Filtering ", filterArr(3, [1, 2, 3, 4, 5]));
+
+      let fillterEven = (arr) => {
+        return arr.filter((o) => o % 2 == 0);
+      };
+      let fillterOdd = (arr) => {
+        return arr.filter((o) => o % 2 != 0);
+      };
+      let evensAndOdds = (arr) => {
+        let totalEven = fillterEven(arr);
+        let totalOdd = fillterOdd(arr);
+        console.log(`The number of odds are ${totalOdd}`);
+        console.log(`The number of evens are ${totalEven}`);
+      };
+      evensAndOdds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+      function sumArgs() {
+        let args = arguments;
+        let total = 0;
+        for (const v of args) {
+          total += v;
+        }
+        console.log(args);
+        console.log(`The total is ${total}`);
+      }
+      sumArgs(1, 2, 3);
+      sumArgs(1, 2, 3, 4);
+
+      let arr = [1, 2, 3, 4, 5];
+      let sum = arr.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+      }, 0);
+      console.log(sum);
+
+      let userIdGenerator = (mixLength) => {
+        return;
+      };
+    </script>
+  </body>
+</html>
