@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N7_Ex3</title>
+  </head>
+  <body>
+    <script>
+      let personAccount = {
+        firstName: "Ei Ei",
+        lastName: "Kyaw",
+        incomes: [
+          {
+            descption: "Full-Time",
+            income: 4000,
+          },
+          {
+            descption: "Part-Time",
+            income: 2000,
+          },
+        ],
+        expenses: [
+          {
+            descption: "Travel",
+            cost: 800,
+          },
+          {
+            descption: "Living",
+            cost: 1000,
+          },
+          {
+            descption: "General",
+            cost: 1000,
+          },
+        ],
+        totalIncome: function () {
+          let totalIncome = 0;
+          this.incomes.forEach((income) => {
+            totalIncome += income.income;
+          });
+          return totalIncome;
+        },
+        totalExpense: function () {
+          let totalExpense = 0;
+          this.expenses.forEach((expense) => {
+            totalExpense += expense.cost;
+          });
+          return totalExpense;
+        },
+        accountInfo: function () {
+          let fullName = this.firstName + " " + this.lastName;
+          return (
+            "He/She is " +
+            fullName +
+            ". Total income is " +
+            this.totalIncome() +
+            ". Total expense is " +
+            this.totalExpense() +
+            "."
+          );
+        },
+        addIncome: function (incomeDec, incomeAmt) {
+          this.incomes.push({
+            descption: incomeDec,
+            income: incomeAmt,
+          });
+        },
+      };
+      console.log(personAccount.totalIncome());
+      console.log(personAccount.totalExpense());
+      console.log(personAccount.accountInfo());
+      personAccount.addIncome("Freelance", 1500);
+      console.log(personAccount);
+
+      const users = [
+        {
+          _id: "ab12ex",
+          username: "Alex",
+          email: "alex@alex.com",
+          password: "123123",
+          createdAt: "08/01/2020 9:00 AM",
+          isLoggedIn: false,
+        },
+        {
+          _id: "fg12cy",
+          username: "Asab",
+          email: "asab@asab.com",
+          password: "123456",
+          createdAt: "08/01/2020 9:30 AM",
+          isLoggedIn: true,
+        },
+        {
+          _id: "zwf8md",
+          username: "Brook",
+          email: "brook@brook.com",
+          password: "123111",
+          createdAt: "08/01/2020 9:45 AM",
+          isLoggedIn: true,
+        },
+        {
+          _id: "eefamr",
+          username: "Martha",
+          email: "martha@martha.com",
+          password: "123222",
+          createdAt: "08/01/2020 9:50 AM",
+          isLoggedIn: false,
+        },
+        {
+          _id: "ghderc",
+          username: "Thomas",
+          email: "thomas@thomas.com",
+          password: "123333",
+          createdAt: "08/01/2020 10:00 AM",
+          isLoggedIn: false,
+        },
+      ];
+
+      const products = [
+        {
+          _id: "eedfcf",
+          name: "mobile phone",
+          description: "Huawei Honor",
+          price: 200,
+          ratings: [
+            { userId: "fg12cy", rate: 5 },
+            { userId: "zwf8md", rate: 4.5 },
+          ],
+          likes: [],
+        },
+        {
+          _id: "aegfal",
+          name: "Laptop",
+          description: "MacPro: System Darwin",
+          price: 2500,
+          ratings: [],
+          likes: ["fg12cy"],
+        },
+        {
+          _id: "hedfcg",
+          name: "TV",
+          description: "Smart TV:Procaster",
+          price: 400,
+          ratings: [{ userId: "fg12cy", rate: 5 }],
+          likes: ["fg12cy"],
+        },
+      ];
+
+      function checkExistedUser(filterUser) {
+        return users.find((user) => user._id == filterUser._id);
+      }
+
+      function signUp(user) {
+        if (checkExistedUser(user)) {
+          console.log("This user", user._id, "is already existed!!!");
+        } else {
+          users.push(user);
+          console.log("This user", user._id, "is successfuly added!!!");
+          console.log(users);
+        }
+      }
+      signUp({
+        _id: "eek123",
+        username: "EEK",
+        email: "eek@eek.com",
+        password: "123123",
+        createdAt: "08/01/2020 10:00 AM",
+        isLoggedIn: false,
+      });
+      signUp({
+        _id: "zwf8md",
+      });
+
+      function signIn(user) {
+        if (checkExistedUser(user)) {
+          console.log("This user", user._id, "can sign in now.");
+        } else {
+          console.log("This user", user._id, "does not exist.");
+        }
+      }
+      signIn({
+        _id: "eek123",
+      });
+      signIn({
+        _id: "awwkyie",
+      });
+
+      function findProduct(productId) {
+        return products.find((prod) => {
+          prod._id == productId;
+        });
+      }
+
+      function rateProduct(productId) {
+        let product = products.find((prod) => productId == productId);
+        console.log("f", findProduct(productId));
+        return product.ratings;
+      }
+
+      function averageRating(productId) {
+        let ratings = this.rateProduct();
+        let total = 0;
+        ratings.forEach((rating) => {
+          total += rating.rate;
+        });
+        console.log(
+          `The average rating of this product '${productId}' is ${
+            total / ratings.length
+          }.`
+        );
+      }
+      let filterProductId = "eedfcf";
+      console.log(rateProduct(filterProductId));
+      averageRating(filterProductId);
+
+      function likeProduct(productId) {}
+    </script>
+  </body>
+</html>

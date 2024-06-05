@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let countries = ["Finland", "Estonia", "Sweden"];
+
+      // syntax in a normal or a function declaration
+      console.log("syntax in a normal or a function declaration......");
+      function showCountry1(country, index, arr) {
+        console.log(index, country.toUpperCase());
+      }
+      countries.forEach(showCountry1);
+
+      console.log("syntax in a normal or a function declaration......");
+      countries.forEach(function (country, index, arr) {
+        console.log(index, country.toUpperCase());
+      });
+
+      // syntax in a arrow function
+      console.log("syntax in a arrow function......");
+      const showCountry2 = (country, index, arr) => {
+        console.log(index, country.toUpperCase());
+      };
+      countries.forEach(showCountry2);
+
+      const numbers = [1, 2, 3, 4];
+      let sum = 0;
+      numbers.forEach((n) => (sum += n));
+      console.log(`The sum of [1,2,3,4] is ${sum}`);
+    </script>
+  </body>
+</html>
