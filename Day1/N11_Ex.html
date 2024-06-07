@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const products = [
+        { product: "banana", price: 3 },
+        { product: "mango", price: 6 },
+        { product: "potato", price: " " },
+        { product: "avocado", price: 8 },
+        { product: "coffee", price: 10 },
+        { product: "tea", price: "" },
+      ];
+
+      // Print the price of each product using forEach
+      let printPrice = (prod) => {
+        console.log(prod.product, prod.price);
+      };
+      products.forEach(printPrice);
+      console.log("");
+
+      // Print the product items as follows using forEach
+      // The price of banana is 3 euros.
+      // The price of mango is 6 euros.
+      // The price of potato is unknown.
+      // .......
+      products.forEach((prod) => {
+        console.log(
+          `The price of ${prod.product} is ${
+            prod.price == " " || prod.price.length < 1
+              ? "unknown"
+              : prod.price + " euros"
+          }.`
+        );
+      });
+      console.log("");
+
+      // Calculate the sum of all the prices using forEach
+      let total = 0;
+      products.forEach((p) => {
+        total += Number(p.price);
+      });
+      console.log("Total price :", total);
+      console.log("");
+
+      // Create an array of prices using map and store it in a variable prices
+      const priceList = products.map((p) => Number(p.price));
+      console.log(`new products : ${priceList}`);
+      console.log("");
+
+      // Filter products with prices
+      console.log(products.filter((p) => p.price > 5));
+      console.log("");
+
+      // Use method chaining to get the sum of the prices(map, filter, reduce)
+      // Calculate the sum of all the prices using reduce only
+      let pList = priceList.filter((p) => p > 0);
+      console.log(`reduce ... ${pList.reduce((acc, cur) => acc + cur)}`);
+      console.log("");
+
+      let priceIsNull = (p) => p.length < 1 || p == " ";
+
+      // Find the first product which doesn't have a price value
+      let firstProd = products.find((p) => priceIsNull(p.price));
+      console.log(`First product (doesn't have price) : ${firstProd.product}`);
+      console.log("");
+
+      // Find the index of the first product which does not have price value
+      let firstProdIndex = priceList.findIndex((p) => p < 1);
+      console.log(
+        `First product's index (doesn't have price) : ${firstProdIndex}`
+      );
+      console.log("");
+
+      // Check if some products do not have a price value
+      let someProd = products.some((p) => priceIsNull(p.price));
+      console.log(`check if some products (don't have price) : ${someProd}`);
+      console.log("");
+
+      // Check if all the products have price value
+      let allProd = products.every((p) => priceIsNull(p.price));
+      console.log(`check if all products (have price) : ${allProd}`);
+    </script>
+  </body>
+</html>
