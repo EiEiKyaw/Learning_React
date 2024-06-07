@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(firstName, lastName, age) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.age = 18;
+        }
+        getFullName() {
+          return this.firstName + " " + this.lastName;
+        }
+        static favoriteSkill() {
+          const skills = ["HTML", "CSS", "JS", "React", "Python", "Node"];
+          const random = Math.floor(Math.random() * skills.length);
+          return skills[random];
+        }
+        static showDateTime() {
+          let now = new Date();
+          let year = now.getFullYear();
+          let month = now.getMonth() + 1;
+          let date = now.getDate();
+          let hour =
+            now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+          let min =
+            now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+          return `${date}.${month}.${year} ${hour}:${min}`;
+        }
+      }
+
+      class Student extends Person {
+        saySomething() {
+          console.log("I am a child of the person class");
+        }
+      }
+
+      let student = new Student("Ei", "Kyaw");
+      console.log(student);
+      console.log(student.getFullName());
+      console.log(student.saySomething());
+    </script>
+  </body>
+</html>

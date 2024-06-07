@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Override the method you create in Animal class
+      class Animal {
+        constructor(name, age, color, legs = 4) {
+          this.name = name;
+          this.age = age;
+          this.color = color;
+          this.legs = legs;
+        }
+        getInfo() {
+          return `Name: ${this.name}, Age: ${this.age}, Color: ${this.color}, Legs: ${this.legs}`;
+        }
+        saySomething() {
+          return "This is an animal.";
+        }
+      }
+
+      class Dog extends Animal {
+        saySomething() {
+          return "This is a dog.";
+        }
+      }
+
+      class Cat extends Animal {
+        saySomething() {
+          return "This is a cat.";
+        }
+      }
+
+      let myCat = new Cat("War War", 2, "Brown");
+      console.log(myCat.getInfo());
+      console.log(myCat.saySomething());
+
+      let myDog = new Dog("Bo Bo", 5, "Black");
+      console.log(myDog.getInfo());
+      console.log(myDog.saySomething());
+    </script>
+  </body>
+</html>
