@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Create a style object for the main JSX
+      // Create a style object for the footer and app JSX
+      // Add more styles to the JSX elements
+
+      const rootElement = document.querySelector(".root");
+
+      const mainStyles = {
+        color: "blue",
+        fontWeight: "bold",
+        backgroundColor: "#00F3AA",
+        textAlign: "center",
+      };
+
+      const main = (
+        <main style={mainStyles}>
+          <h3>Ei Ei Kyaw</h3>
+          <p>Myanmar</p>
+          <p>Developer</p>
+          <p>Female</p>
+          <p>eieikyaw@gmail.com</p>
+          <p>+95945xxxxxx</p>
+        </main>
+      );
+
+      const footer = (
+        <footer>
+          <p>2024</p>
+          <p>example</p>
+        </footer>
+      );
+
+      const app = (
+        <div>
+          {main}
+          {footer}
+        </div>
+      );
+
+      ReactDOM.render(app, rootElement);
+    </script>
+  </body>
+</html>

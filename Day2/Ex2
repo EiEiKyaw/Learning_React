@@ -1,0 +1,37 @@
+===>>> Why did you chose to use react?
+
+- Component-Based Architecture: React promotes building UIs using reusable components, which can be independently developed, tested, and maintained. This leads to more modular and manageable code.
+- Virtual DOM: React's virtual DOM efficiently updates and renders components, providing better performance especially in applications with frequent updates.
+- Strong Community and Ecosystem: React has a large, active community and a rich ecosystem of libraries, tools, and extensions. This makes finding solutions, getting support, and integrating third-party tools easier.
+- Flexibility: React is often referred to as the "V" (View) in MVC, allowing developers to use it with other libraries or frameworks for the rest of their application stack.
+- Performance: The virtual DOM, as well as optimizations for re-rendering, make React applications typically fast and efficient.
+- Backed by Facebook: React is maintained by Facebook and a community of individual developers and companies. This backing provides confidence in the ongoing support and evolution of the library.
+- Learning Curve: While it introduces concepts like JSX and component-based architecture, many developers find React easier to learn compared to some other frameworks due to its simplicity and focus.
+
+---------------- xxxxxxxxxx ----------------
+
+===>>> What measures do you use to know popularity ?
+
+To gauge the popularity of a technology like React, several metrics and sources can be considered:
+
+- GitHub Stars and Contributions: The number of stars, forks, and contributions on the project's GitHub repository.
+- NPM Downloads: The number of weekly downloads on the npm (Node Package Manager) registry provides insight into how many developers are using it.
+- Google Trends: Search interest over time as tracked by Google Trends.
+- Job Market Demand: The number of job postings requiring React skills on job boards like Indeed, LinkedIn, etc.
+- Surveys: Developer surveys, such as the Stack Overflow Developer Survey, which often ask about preferred tools and technologies.
+- Social Media and Community Activity: Discussions and mentions on platforms like Twitter, Reddit, Stack Overflow, and specialized forums.
+
+---------------- xxxxxxxxxx ----------------
+
+===>>> What is more popular, React or Vue ?
+
+React and Vue are both popular JavaScript frameworks/libraries, each with its own strengths and community. As of my knowledge cutoff in 2024:
+
+- GitHub Stars: Vue generally has more GitHub stars compared to React, indicating high interest and satisfaction among developers.
+- React: ~212k stars
+- Vue: ~210k stars
+- NPM Downloads: React typically has a higher number of weekly downloads on npm, suggesting broader usage in the industry.
+  React: ~11 million weekly downloads
+  Vue: ~3 million weekly downloads
+- Job Market: React tends to have a higher demand in the job market, with more job postings requiring React skills compared to Vue.
+- Google Trends: React usually has higher search interest globally compared to Vue.

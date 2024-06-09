@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      //   Write your name in a JSX element and store it in a name variable
+      //   Write a JSX element which displays your full name, country, title, gender, email, phone number. Use h1 for the name and p for the rest of the information and store it in a user variable
+      //   Write a footer JSX element
+
+      const rootElement = document.querySelector(".root");
+
+      const header = (
+        <header>
+          <h3>Ei Ei Kyaw</h3>
+          <p>Myanmar</p>
+          <p>Developer</p>
+          <p>Female</p>
+          <p>eieikyaw@gmail.com</p>
+          <p>+95945xxxxxx</p>
+        </header>
+      );
+
+      const footer = (
+        <footer>
+          <p>2024</p>
+          <p>example</p>
+        </footer>
+      );
+
+      const main = (
+        <div>
+          {header}
+          {footer}
+        </div>
+      );
+
+      ReactDOM.render(main, rootElement);
+    </script>
+  </body>
+</html>

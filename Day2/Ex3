@@ -1,0 +1,26 @@
+===>>> What is JSX?
+JSX stands for JavaScript XML. It is a syntax extension for JavaScript used in React to describe what the UI should look like. JSX looks similar to HTML but allows you to write HTML structures within JavaScript code.
+
+const element = <h1>Hello, world!</h1>;
+
+---------------- xxxxxxxxxx ----------------
+
+===>>> What is Babel?
+Babel is a JavaScript compiler that allows you to use next-generation JavaScript features today. It converts (or transpiles) modern JavaScript code into a version that is compatible with older browsers. Babel can also convert JSX syntax into regular JavaScript that browsers can understand.
+
+---------------- xxxxxxxxxx ----------------
+
+===>>> What is a Transpiler?
+A transpiler (short for "source-to-source compiler") is a type of compiler that translates code from one programming language to another at the same level of abstraction. In the context of web development, Babel is a transpiler that converts modern JavaScript (ES6+ and JSX) into ES5 JavaScript, which can run in older browsers that do not support newer JavaScript features. Another example is TypeScript transpiling to JavaScript.
+
+Here is a simple example of how Babel works:
+
+Input (modern JavaScript or JSX):
+const greet = () => {
+return <h1>Hello, world!</h1>;
+};
+
+Output (transpiled JavaScript):
+var greet = function greet() {
+return React.createElement("h1", null, "Hello, world!");
+};
