@@ -13,7 +13,7 @@ const App = () => {
   let status = age >= 18;
 
   return (
-    <div className="app">
+    <div className="boolean-app">
       <Status status={status} />
     </div>
   );

@@ -13,7 +13,7 @@ const App = () => {
   const mass = 75;
 
   return (
-    <div className="app">
+    <div className="number-app">
       <Age age={age} />
       <Weight weight={gravity * mass} />
     </div>

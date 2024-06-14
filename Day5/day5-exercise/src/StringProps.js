@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = (props) => (
   <header>
-    <div class="header-wrapper">
+    <div className="header-wrapper">
       <h1>{props.welcome}</h1>
       <h2>{props.title}</h2>
       <h3>{props.subtitile}</h3>
@@ -23,7 +23,7 @@ const App = () => {
   const date = "Oct 4, 2020";
 
   return (
-    <div className="app">
+    <div className="string-app">
       <Header
         welcome={welcome}
         title={title}
