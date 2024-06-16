@@ -61,13 +61,13 @@ const buttonStyles = {
 };
 
 const imageStyles = {
-  maxWidth: "50px",
-  maxHeight: "50px",
+  maxWidth: "300px",
+  maxHeight: "300px",
 };
 
 const UserCard = ({ user: { firstName, lastName, image } }) => (
   <div className="user-card">
-    <img src={image} alt={firstName} />
+    <img src={image} alt={firstName} style={imageStyles} />
     <h2>
       {firstName}
       {lastName}
@@ -88,7 +88,7 @@ const Main = ({ user, techs, handleTime, greet }) => (
       <ul>
         <TechList techs={techs} />
       </ul>
-      <UserCard user={user} style={imageStyles} />
+      <UserCard user={user} />
       <Button text="Greet People" onClick={greet} style={buttonStyles} />
       <Button text="Show Time" onClick={handleTime} style={buttonStyles} />
     </div>
