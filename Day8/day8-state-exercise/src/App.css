@@ -1,0 +1,82 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  background-color: #04aa6d; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+table,
+form,
+input {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  width: 400px;
+}
+
+.fixed-button {
+  position: fixed;
+  top: 20px; /* Adjust this value to set the distance from the top */
+  right: 20px; /* Adjust this value to set the distance from the right */
+  width: 50px; /* Adjust the width of the button */
+  height: 50px; /* Adjust the height of the button */
+  background-color: rgba(0, 0, 0, 0.7); /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove button border */
+  border-radius: 50%; /* Make button circular */
+  font-size: 24px; /* Adjust the font size */
+  line-height: 50px; /* Ensure the line height matches the button height */
+  text-align: center; /* Center align text horizontally */
+  cursor: pointer; /* Show pointer cursor on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  padding: 0;
+}
+
+.fixed-button:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Darker color on hover */
+}
