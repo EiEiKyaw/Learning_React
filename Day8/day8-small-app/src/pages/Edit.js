@@ -9,7 +9,8 @@ const Edit = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const itemToUpdate = items.find((item) => item.id === id);
+    const itemToUpdate = items.find((item) => item.id === parseInt(id));
+
     if (itemToUpdate) {
       setName(itemToUpdate.name);
     }

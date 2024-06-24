@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import ItemContextProvider from "./pages/ItemContext";
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
-import Create from "./Create";
+import Create from "./pages/Create";
 
 const App = () => {
   return (

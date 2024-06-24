@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ItemContext } from "./pages/ItemContext";
+import { ItemContext } from "./ItemContext";
 
 const Create = () => {
   const [name, setName] = useState("");
