@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 const DoubleClickEvent = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("Double Click Me");
 
   const handleDoubleClick = () => {
     setText(
-      text === "Double Click Me" ? "Double Clicked!!!" : "Double Click Me"
+      text === "Double Click Me" ? "Double Clicked !!!" : "Double Click Me"
     );
   };
 
