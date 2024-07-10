@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Construtor</title>
+  </head>
+  <body></body>
+  <script>
+    function CreatePerson(name) {
+      const obj = {};
+      obj.name = name;
+      obj.introduceSelf = () => {
+        console.log(`Hi, I am ${name}`);
+      };
+      return obj;
+    }
+    const eikyaw = CreatePerson("Ei Ei Kyaw");
+    eikyaw.introduceSelf();
+    const awwkyie = CreatePerson("Aww Aww Kyie");
+    awwkyie.introduceSelf();
+
+    function CreateFruit(name) {
+      this.name = name;
+      this.introduceFruit = function () {
+        console.log(`This fruit is ${this.name}`);
+      };
+    }
+    const apple = new CreateFruit("Apple");
+    apple.introduceFruit();
+    const orange = new CreateFruit("Orange");
+    orange.introduceFruit();
+  </script>
+</html>
