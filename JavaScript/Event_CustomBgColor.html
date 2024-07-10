@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event with Custom Background Color</title>
+    <style>
+      button {
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="one-click">One Click</button>
+    <button id="dbl-click">Double Click</button>
+    <button id="focus-btn">Make Focus</button>
+    <button id="mou-btn">Play Mouse</button>
+    <p></p>
+    <button id="reset-btn">Remove Listener</button>
+  </body>
+  <script>
+    let oneClick = document.querySelector("#one-click");
+    let dblClick = document.querySelector("#dbl-click");
+    let focusBtn = document.querySelector("#focus-btn");
+    let mouBtn = document.querySelector("#mou-btn");
+    let resetBtn = document.querySelector("#reset-btn");
+    let p = document.querySelector("p");
+    let count = 0;
+
+    function ramdom(num) {
+      return Math.floor(Math.random() * (num + 1));
+    }
+
+    function removeListener() {
+      oneClick.removeEventListener("click", changeBackground);
+      dblClick.removeEventListener("dblclick", changeBackground);
+    }
+
+    function changeBackground() {
+      document.body.style.backgroundColor = `rgb(${ramdom(255)} ${ramdom(
+        255
+      )} ${ramdom(255)})`;
+      if (count == 10) {
+        p.textContent = "Reach Max Limit 10";
+        removeListener();
+      }
+      count++;
+    }
+
+    oneClick.addEventListener("click", changeBackground);
+    oneClick.addEventListener("click", () => {
+      oneClick.textContent = "Can Click Again";
+    });
+    dblClick.addEventListener("dblclick", changeBackground);
+
+    focusBtn.addEventListener("focus", (event) => {
+      focusBtn.textContent = "Now Focus";
+      event.target.style.backgroundColor = "pink";
+    });
+
+    focusBtn.addEventListener("blur", (event) => {
+      focusBtn.textContent = "Now Blur";
+      event.target.style.backgroundColor = "yellow";
+    });
+
+    mouBtn.addEventListener("mouseover", (event) => {
+      mouBtn.textContent = "Mouse Over";
+      event.target.style.backgroundColor = "red";
+    });
+
+    mouBtn.addEventListener("mouseout", (event) => {
+      mouBtn.textContent = "Mouse Out";
+      event.target.style.backgroundColor = "green";
+    });
+
+    resetBtn.addEventListener("click", () => {
+      removeListener();
+      p.textContent = "Already Removed";
+    });
+
+    // oneClick.removeEventListener("click", changeBackground);
+  </script>
+</html>

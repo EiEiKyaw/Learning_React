@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Building Block</title>
+  </head>
+  <body>
+    <label for="theme">Select theme: </label>
+    <select id="theme">
+      <option value="white">White</option>
+      <option value="black">Black</option>
+    </select>
+    <h1 id="title">This is my website</h1>
+  </body>
+  <script>
+    let response = "";
+    let select = document.querySelector("select");
+    let htmlDiv = document.querySelector("html");
+    let title = document.querySelector("#title");
+    document.body.style.padding = "50px";
+    title.style.fontSize = "64px";
+
+    function update(bgColor, color) {
+      htmlDiv.style.backgroundColor = bgColor;
+      htmlDiv.style.color = color;
+    }
+
+    select.addEventListener("change", () => {
+      select.value == "black"
+        ? update("black", "white")
+        : update("white", "black");
+    });
+  </script>
+</html>
