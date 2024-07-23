@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const url =
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
+    // No-1
+    async function fetchProducts() {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Http Error: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(`First Name is ${data[0].name}`);
+      } catch (error) {
+        console.error(`Failed to fetch: ${error}`);
+      }
+    }
+    fetchProducts();
+
+    // No-2
+    async function getProducts() {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Http Error: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    }
+
+    const promise = getProducts();
+    promise
+      .then((resp) => {
+        console.log(`The first data is ${resp[0].name}`);
+      })
+      .catch((error) => {
+        console.error(`Failed to get: ${error}`);
+      });
+  </script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const fetchPromise = fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json"
+    );
+
+    // fetchPromise
+    //   .then((resp) => resp.json())
+    //   .then((data) => {
+    //     for (const d of data) {
+    //       console.log(`name is ${d.name}`);
+    //     }
+    //   });
+
+    fetchPromise
+      .then((resp) => {
+        if (!resp.ok) throw new Error(`Http Error: ${resp.status}`);
+        return resp.json();
+      })
+      .then((data) => {
+        for (const d of data) {
+          console.log(`Name is ${d.name}`);
+        }
+      });
+  </script>
+</html>
