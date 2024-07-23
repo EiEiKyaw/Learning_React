@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    class Person {
+      constructor(name) {
+        this.name = name;
+      }
+      intro() {
+        console.log("My name is", this.name);
+      }
+    }
+
+    class Professor extends Person {
+      constructor(name, subjects) {
+        super(name);
+        this.subjects = subjects;
+      }
+      introduceSelf() {
+        console.log("I will be your", this.subjects, "teacher.");
+      }
+    }
+
+    class Student extends Person {
+      constructor(name, year) {
+        super(name);
+        this.year = year;
+      }
+      introduceSelf() {
+        console.log(
+          "I am in the",
+          this.year == 1
+            ? "1st"
+            : this.year == 2
+            ? "2nd"
+            : this.year == 3
+            ? "3rd"
+            : this.year + "th",
+          "year."
+        );
+      }
+    }
+
+    const person = new Person("Ko Ko");
+    person.intro();
+
+    const professor = new Professor("eieikyaw", "Maths");
+    professor.intro();
+    professor.introduceSelf();
+
+    let student = new Student("awwkyie", 3);
+    student.intro();
+    student.introduceSelf();
+
+    student = new Student("aak", 6);
+    student.intro();
+    student.introduceSelf();
+  </script>
+</html>

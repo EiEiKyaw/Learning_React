@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // setting prototype using constructor
+    const protoOfPerson = {
+      greet() {
+        console.log("Nice to meet you,", this.name);
+      },
+    };
+
+    function Person(name) {
+      (this.name = name), (this.age = 27);
+    }
+
+    Object.assign(Person.prototype, protoOfPerson);
+    const person = new Person("EiEiKyaw");
+    person.greet();
+
+    // Own Properties
+    console.log(`Obj is ${person}`);
+    console.log(`Check 'name' prop >>> ${Object.hasOwn(person, "name")}`);
+    console.log(`Check 'age' prop >>> ${Object.hasOwn(person, "age")}`);
+    console.log(`Check 'greet' prop >>> ${Object.hasOwn(person, "greet")}`);
+  </script>
+</html>
