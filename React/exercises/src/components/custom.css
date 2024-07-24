@@ -70,3 +70,21 @@ ul {
 li {
   margin: 5px;
 }
+
+.day {
+  background: #fff;
+  color: #222;
+}
+
+.night {
+  background: #222;
+  color: #fff;
+}
+
+.panel {
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 10px;
+  width: 200px;
+}
