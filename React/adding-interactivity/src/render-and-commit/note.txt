@@ -1,0 +1,26 @@
+Render And Commit
+-----------------
+Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. 
+In this scenario, React is the waiter who puts in requests from customers and brings them their orders. 
+This process of requesting and serving UI has three steps:
+
+1. Triggering a render (delivering the guest’s order to the kitchen)
+2. Rendering the component (preparing the order in the kitchen)
+3. Committing to the DOM (placing the order on the table)
+
+Step 1: Trigger a render
+------------------------
+There are two reasons for a component to render:
+1.1. It's the component's initial render
+1.2. The commponent's state has been updated
+
+Step 2: React renders your components
+-------------------------------------
+2.1. On initial render, React will call the root component.
+2.2. For subsequent renders, React will call the function component whose update triggered the render
+
+Step 3: React commits changes to the DOM
+-----------------------------------------
+3.1. For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen
+3.2. For re-renders, React will apply the minimal necessary operations to make the DOM match the latest rendering output.
+... React only changes the DOM nodes if there's difference between renders
