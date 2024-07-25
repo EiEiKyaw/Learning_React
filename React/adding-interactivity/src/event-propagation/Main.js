@@ -7,8 +7,8 @@ export default function Main() {
   return (
     <>
       {/* <EventPropagation /> */}
-      {/* <StopPropagation /> */}
-      <PreventingDefault />
+      <StopPropagation />
+      {/* <PreventingDefault /> */}
     </>
   );
 }

@@ -1,0 +1,23 @@
+Component needs to remember things: the current input value, image, shopping items, .....
+In React, this kind of component specific memory is called 'State'
+
+useState
+--------
+1. A state variable to retain the data between renders
+2. A state setter function to update the variable and trigger React to render the component again
+
+Hook
+-----
+1. useState, as well as any other function starting with 'use', is called a Hook 
+2. can only be called at the top level of your components or own Hooks
+3. Hooks are special functions that are only available while React is rendering
+
+const [index, setIndex] = useState(0);
+index is a state variable
+setIndex is the setter function
+
+State is isolated and private (N3_IsolatedAndPrivateInState.js)
+-----------------------------
+1. If you render the same component twice, each copy will have completely isolated state!
+2. State is not tied to a particular function call or a place in the code
+3. Unlike props, state is fully private to the component declaring it
