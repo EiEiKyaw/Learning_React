@@ -1,0 +1,20 @@
+State As A Snapshot
+-------------------
+- State behaves more like a snapshot
+
+Setting State Triggers Renders (N1)
+-----------------------------------
+1. The onSubmit event handler executes.
+2. setIsSent(true) sets isSent to true and queues a new render.
+3. React re-renders the component according to the new isSent value.
+
+Rendering takes a snapshot in time (N2)
+----------------------------------------
+When React re-renders a component
+1. React calls your function again
+2. You component returns a new JSX snapshot
+3. React then updates the screen to update the snapshot your function returned
+
+Your component returns a snapshot of UI with a fresh set of props and event handlers in its JSX, 
+all calculated using the state values from that render.
+
