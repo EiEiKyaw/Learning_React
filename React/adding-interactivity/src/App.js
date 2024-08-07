@@ -4,6 +4,7 @@ import EventPropagation from "./event-propagation/Main";
 import ComponentMemory from "./component-memory/Main";
 import RenderAndCommit from "./render-and-commit/Main";
 import StateAsSnapshot from "./state-as-snapshot/Main";
+import QueueingSeries from "./queueing_series_of_state_updates/Main";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <EventPropagation /> */}
       {/* <ComponentMemory /> */}
       {/* <RenderAndCommit /> */}
-      <StateAsSnapshot />
+      {/* <StateAsSnapshot /> */}
+      <QueueingSeries />
     </div>
   );
 }
