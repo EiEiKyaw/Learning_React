@@ -25,15 +25,7 @@ function Testing() {
 
   return (
     <div>
-      {data ? (
-        Array.isArray(data) ? (
-          data.map((item, index) => <p key={index}>{item.firstName}</p>)
-        ) : (
-          <p>{data.firstName}</p>
-        )
-      ) : (
-        <p>Loading...</p>
-      )}
+      {data ? <p>{data.firstName + " " + data.lastName}</p> : <p>Loading...</p>}
     </div>
   );
 }
