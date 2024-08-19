@@ -5,7 +5,6 @@ function Home() {
   return (
     <div>
       <ResponsiveAppBar />
-      <h1>gu,,,,,</h1>
     </div>
   );
 }
