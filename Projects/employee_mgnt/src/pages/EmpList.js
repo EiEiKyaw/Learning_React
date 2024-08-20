@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BasicTable from "../components/basic-table";
-import DataTable from "../components/data-table";
 
 function EmpList() {
   const [data, setData] = useState([]);
@@ -30,9 +29,9 @@ function EmpList() {
       <div style={{ marginBottom: "50px" }}>
         <BasicTable data={data} />
       </div>
-      <div>
+      {/* <div>
         <DataTable data={data} />
-      </div>
+      </div> */}
     </>
   );
 }

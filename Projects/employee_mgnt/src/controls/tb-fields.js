@@ -1,11 +1,11 @@
 export const columns = [
-  { field: "id", headerName: "ID", width: 150 },
+  { field: "id", headerName: "ID", width: 100 },
   { field: "name", headerName: "Name", width: 250 },
   { field: "position", headerName: "Position", width: 300 },
   {
     field: "department",
     headerName: "Department",
-    width: 300,
+    width: 200,
   },
   {
     field: "birthdate",
