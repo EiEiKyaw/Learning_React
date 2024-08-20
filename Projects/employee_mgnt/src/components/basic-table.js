@@ -8,6 +8,22 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
+import moment from "moment";
+
+const formatDate = (dateString) => {
+  return moment(dateString).format("DD MMM, YYYY");
+};
+
+// const formatDate = (dateString) => {
+//   if (!dateString) return "";
+//   const options = {
+//     day: "2-digit",
+//     month: "short",
+//     year: "numeric",
+//   };
+//   const date = new Date(dateString);
+//   return date.toLocaleDateString("en-US", options).replace(/,([^,]*)$/, ",$1");
+// };
 
 export default function BasicTable({ data }) {
   const navigate = useNavigate();
@@ -44,8 +60,8 @@ export default function BasicTable({ data }) {
               </TableCell>
               <TableCell>{row.position}</TableCell>
               <TableCell>{row.department}</TableCell>
-              <TableCell align="right">{row.birthdate}</TableCell>
-              <TableCell align="right">{row.start_date}</TableCell>
+              <TableCell align="right">{formatDate(row.birthdate)}</TableCell>
+              <TableCell align="right">{formatDate(row.start_date)}</TableCell>
               <TableCell>
                 <EditIcon
                   color="primary"

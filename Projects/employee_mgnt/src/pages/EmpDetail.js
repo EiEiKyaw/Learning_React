@@ -3,7 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import ReplyIcon from "@mui/icons-material/Reply";
+import Typography from "@mui/material/Typography";
 
 export default function EmpDetail() {
   const { id } = useParams();
@@ -21,7 +23,7 @@ export default function EmpDetail() {
         const data = await response.json();
         setFormData(data["employee"]);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching employee with id:", error);
       }
     };
 
@@ -38,81 +40,143 @@ export default function EmpDetail() {
   });
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target();
+    const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    console.log(formData);
   };
 
   const handleBackClick = () => {
     navigate(`/`);
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const response = await fetch(`https://sst.mglt.workers.dev/updateEK/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      console.log("After >>>", data);
+      navigate("/");
+    } catch (error) {
+      console.error("Error updating employee:", error);
+    }
   };
 
   return (
     <div style={{ margin: "20px" }}>
       <Box
         component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
         onSubmit={handleFormSubmit}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          boxShadow: 3, // Add shadow
+          padding: 4, // Optional: Adds padding inside the box
+          borderRadius: 2, // Optional: Adds rounded corners
+          marginTop: 4, // Optional: Adds some space from the top
+          // maxWidth: 600, // Set width
+          // width: "100%",
+        }}
         noValidate
         autoComplete="off"
       >
-        <div>
-          <TextField
-            label="Name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="Position"
-            name="position"
-            value={formData.position}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="Department"
-            name="department"
-            value={formData.department}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="DOB"
-            name="birthdate"
-            type="date"
-            InputLabelProps={{ shrink: true }}
-            value={formData.birthdate}
-            onChange={handleInputChange}
-          />
-          <TextField
-            label="Start Date"
-            name="start_date"
-            type="date"
-            InputLabelProps={{ shrink: true }}
-            value={formData.start_date}
-            onChange={handleInputChange}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            style={{ marginRight: 20 }}
-            onClick={() => handleBackClick()}
-          >
-            <ReplyIcon /> Back
-          </Button>
-          <Button variant="contained" color="primary" type="submit">
-            Update
-          </Button>
-        </div>
-        <div></div>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            maxWidth: 600, // Set width
+            width: "100%",
+          }}
+        >
+          <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="body1">Name:</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField
+              fullWidth
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+          </Grid>
+          <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="body1">Position:</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField
+              fullWidth
+              name="position"
+              value={formData.position || ""}
+              onChange={handleInputChange}
+            />
+          </Grid>
+          <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="body1">Department:</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField
+              fullWidth
+              name="department"
+              value={formData.department || ""}
+              onChange={handleInputChange}
+            />
+          </Grid>
+          <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="body1">DOB:</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField
+              fullWidth
+              name="birthdate"
+              type="date"
+              InputLabelProps={{ shrink: true }}
+              value={formData.birthdate}
+              onChange={handleInputChange}
+            />
+          </Grid>
+          <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+            <Typography variant="body1">Start Date:</Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField
+              fullWidth
+              name="start_date"
+              type="date"
+              InputLabelProps={{ shrink: true }}
+              value={formData.start_date || ""}
+              onChange={handleInputChange}
+            />
+          </Grid>
+          <Grid item sm={4}></Grid>
+          <Grid item xs={6} sm={4}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="button"
+              fullWidth
+              onClick={handleBackClick}
+            >
+              <ReplyIcon />
+              Back
+            </Button>
+          </Grid>
+          <Grid item xs={6} sm={4}>
+            <Button variant="contained" color="primary" type="submit" fullWidth>
+              Update
+            </Button>
+          </Grid>
+        </Grid>
       </Box>
     </div>
   );
