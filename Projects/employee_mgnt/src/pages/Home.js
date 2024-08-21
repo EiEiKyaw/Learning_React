@@ -1,10 +1,9 @@
 import React from "react";
-import EmpList from "./EmpList";
 
 function Home() {
   return (
     <div style={{ margin: "20px" }}>
-      <EmpList />
+      <h1>Welcome to my project !!!!!</h1>
     </div>
   );
 }

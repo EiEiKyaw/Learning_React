@@ -26,7 +26,7 @@ function EmpList() {
 
   return (
     <>
-      <div style={{ marginBottom: "50px" }}>
+      <div style={{ margin: "20px" }}>
         <BasicTable data={data} />
       </div>
       {/* <div>
