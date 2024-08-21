@@ -24,6 +24,7 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
+    console.log(".......................");
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -31,6 +32,7 @@ function ResponsiveAppBar() {
   };
 
   const handleCloseNavMenu = (pageName) => {
+    console.log("inside handleCloseNavMenu ....", pageName, "....", activePage);
     if (pageName !== activePage) {
       setActivePage(pageName);
       if (pageName === "Employees") {
@@ -46,9 +48,10 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  // const handleHomeRoute = () => {
-  //   navigate("/");
-  // };
+  const handleHomeRoute = () => {
+    navigate("/");
+    setActivePage("Home");
+  };
 
   return (
     <AppBar position="static">
@@ -68,7 +71,9 @@ function ResponsiveAppBar() {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              cursor: "pointer",
             }}
+            onClick={handleHomeRoute}
           >
             AKEE
           </Typography>
@@ -107,6 +112,7 @@ function ResponsiveAppBar() {
                   key={page}
                   onClick={() => {
                     handleCloseNavMenu(page);
+                    console.log("inside loop 1");
                   }}
                 >
                   <Typography textAlign="center">{page}</Typography>
@@ -130,6 +136,7 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
+            onClick={handleHomeRoute}
           >
             AKEE
           </Typography>
@@ -139,6 +146,7 @@ function ResponsiveAppBar() {
                 key={page}
                 onClick={() => {
                   handleCloseNavMenu(page);
+                  console.log("inside loop 2");
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
