@@ -57,12 +57,15 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AdbIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+            onClick={handleHomeRoute}
+          />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            // href="/"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -120,12 +123,15 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <AdbIcon
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            onClick={handleHomeRoute}
+          />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            // href="/"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -136,7 +142,7 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
-            onClick={handleHomeRoute}
+            // onClick={handleHomeRoute}
           >
             AKEE
           </Typography>
