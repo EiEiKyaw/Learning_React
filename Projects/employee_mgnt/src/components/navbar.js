@@ -16,11 +16,14 @@ import { useNavigate } from "react-router-dom";
 
 const pages = ["Employees", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Logout"];
+const employeeSubPages = ["Employee List", "Add Employee"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [activePage, setActivePage] = React.useState("Home");
+  const [selectedEmp, setSelectedEmp] = React.useState("all");
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -29,6 +32,10 @@ function ResponsiveAppBar() {
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleOpenEmployeesMenu = (event) => {
+    setAnchorElEmployees(event.currentTarget);
   };
 
   const handleCloseNavMenu = (pageName) => {
@@ -46,6 +53,16 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseEmployeesMenu = (subPage) => {
+    console.log("inside handleCloseNavMenu ....", subPage);
+    if (subPage === "Employee List") {
+      navigate(`/employee/all`);
+    } else if (subPage === "Add Employee") {
+      navigate(`/employee/add`);
+    }
+    setAnchorElEmployees(null);
   };
 
   const handleHomeRoute = () => {
@@ -147,18 +164,59 @@ function ResponsiveAppBar() {
             AKEE
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => {
-                  handleCloseNavMenu(page);
-                  console.log("inside loop 2");
-                }}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            {pages.map((page) =>
+              page === "Employees" ? (
+                <Box key={page}>
+                  <Button
+                    onClick={handleOpenEmployeesMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page}
+                  </Button>
+                  <Menu
+                    anchorEl={anchorElEmployees}
+                    open={Boolean(anchorElEmployees)}
+                    onClose={() => setAnchorElEmployees(null)}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    sx={{
+                      mt: 1,
+                      boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+                      borderRadius: "8px",
+                      "& .MuiMenuItem-root": {
+                        padding: "8px 16px",
+                        "&:hover": {
+                          backgroundColor: "rgba(0, 0, 0, 0.04)",
+                        },
+                      },
+                    }}
+                  >
+                    {employeeSubPages.map((subPage) => (
+                      <MenuItem
+                        key={subPage}
+                        onClick={() => handleCloseEmployeesMenu(subPage)}
+                      >
+                        <Typography textAlign="center">{subPage}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              ) : (
+                <Button
+                  key={page}
+                  onClick={() => handleCloseNavMenu(page)}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              )
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

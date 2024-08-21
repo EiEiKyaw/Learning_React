@@ -7,28 +7,8 @@ import Grid from "@mui/material/Grid";
 import ReplyIcon from "@mui/icons-material/Reply";
 import Typography from "@mui/material/Typography";
 
-export default function EmpDetail() {
-  const { id } = useParams();
+export default function EmpAdd() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://sst.mglt.workers.dev/oneEmployee?id=${id}`
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setFormData(data["employee"]);
-      } catch (error) {
-        console.error("Error fetching employee with id:", error);
-      }
-    };
-
-    fetchData();
-  }, [id]);
 
   const [formData, setFormData] = useState({
     id: "",
@@ -55,16 +35,13 @@ export default function EmpDetail() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        `https://sst.mglt.workers.dev/js/editEK?id=${id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`https://sst.mglt.workers.dev/addEK`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -72,7 +49,7 @@ export default function EmpDetail() {
       console.log("After >>>", data);
       navigate("/");
     } catch (error) {
-      console.error("Error updating employee:", error);
+      console.error("Error creating employee:", error);
     }
   };
 
@@ -88,8 +65,6 @@ export default function EmpDetail() {
           padding: 4, // Optional: Adds padding inside the box
           borderRadius: 2, // Optional: Adds rounded corners
           marginTop: 4, // Optional: Adds some space from the top
-          // maxWidth: 600, // Set width
-          // width: "100%",
         }}
         noValidate
         autoComplete="off"
