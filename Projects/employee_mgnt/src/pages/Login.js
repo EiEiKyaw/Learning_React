@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import theme from "../components/Theme";
 
 export default function BasicCard() {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ export default function BasicCard() {
                   fontWeight: "bold",
                   fontSize: "2rem",
                   width: "100%",
+                  color: theme.palette.icon.main,
                 }}
               >
                 A-KEE

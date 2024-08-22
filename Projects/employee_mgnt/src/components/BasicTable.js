@@ -9,21 +9,11 @@ import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import moment from "moment";
+import theme from "./Theme";
 
 const formatDate = (dateString) => {
   return moment(dateString).format("DD MMM, YYYY");
 };
-
-// const formatDate = (dateString) => {
-//   if (!dateString) return "";
-//   const options = {
-//     day: "2-digit",
-//     month: "short",
-//     year: "numeric",
-//   };
-//   const date = new Date(dateString);
-//   return date.toLocaleDateString("en-US", options).replace(/,([^,]*)$/, ",$1");
-// };
 
 export default function BasicTable({ data }) {
   const navigate = useNavigate();
@@ -64,6 +54,7 @@ export default function BasicTable({ data }) {
               <TableCell align="right">{formatDate(row.start_date)}</TableCell>
               <TableCell>
                 <EditIcon
+                  sx={{ color: theme.palette.icon.main }}
                   color="primary"
                   onClick={() => handleDetailClick(row.id)}
                 />
