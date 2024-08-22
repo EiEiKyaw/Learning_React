@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import EmpDetail from "./pages/EmpDetail";
 import EmpAdd from "./pages/EmpAdd";
@@ -11,6 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/employee/all" element={<EmpList />} />
           <Route exact path="/employee/add" element={<EmpAdd />} />
           <Route exact path="/employee/detail/:id" element={<EmpDetail />} />

@@ -23,10 +23,10 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [activePage, setActivePage] = React.useState("Home");
+  const [activeSetting, setActiveSetting] = React.useState("");
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
-    console.log(".......................");
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -50,7 +50,19 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (settingName) => {
+    console.log(
+      "inside handleCloseNavMenu ....",
+      settingName,
+      "....",
+      activeSetting
+    );
+    if (settingName !== activeSetting) {
+      setActiveSetting(settingName);
+      if (settingName === "Logout") {
+        navigate("/login");
+      }
+    }
     setAnchorElUser(null);
   };
 
@@ -131,7 +143,6 @@ function ResponsiveAppBar() {
                   key={page}
                   onClick={() => {
                     handleCloseNavMenu(page);
-                    console.log("inside loop 1");
                   }}
                 >
                   <Typography textAlign="center">{page}</Typography>
@@ -241,7 +252,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleCloseUserMenu(setting)}
+                >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
