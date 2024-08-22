@@ -58,7 +58,7 @@ function ResponsiveAppBar() {
       activeSetting
     );
     if (settingName !== activeSetting) {
-      setActivePage(settingName);
+      setActiveSetting(settingName);
       if (settingName === "Logout") {
         navigate("/login");
       }
