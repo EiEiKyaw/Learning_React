@@ -23,7 +23,6 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElEmployees, setAnchorElEmployees] = React.useState(null);
   const [activePage, setActivePage] = React.useState("Home");
-  const [selectedEmp, setSelectedEmp] = React.useState("all");
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {

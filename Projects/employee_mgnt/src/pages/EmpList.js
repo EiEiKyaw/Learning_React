@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BasicTable from "../components/basic-table";
+import ResponsiveAppBar from "../components/navbar";
 
 function EmpList() {
   const [data, setData] = useState([]);
@@ -26,6 +27,7 @@ function EmpList() {
 
   return (
     <>
+      <ResponsiveAppBar />
       <div style={{ margin: "20px" }}>
         <BasicTable data={data} />
       </div>
