@@ -104,9 +104,8 @@ function ResponsiveAppBar() {
               textDecoration: "none",
               cursor: "pointer",
             }}
-            onClick={handleHomeRoute}
           >
-            AKEE
+            A-KEE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -169,9 +168,8 @@ function ResponsiveAppBar() {
               color: "inherit",
               textDecoration: "none",
             }}
-            // onClick={handleHomeRoute}
           >
-            AKEE
+            A-KEE
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) =>
