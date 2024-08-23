@@ -48,7 +48,7 @@ export default function NavBar({ toggleSidebar, isOpen }) {
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 2, marginLeft: isOpen ? "170px" : "" }}
+          sx={{ mr: 2 }}
           onClick={toggleSidebar}
         >
           <MenuIcon />
