@@ -55,22 +55,25 @@ export default function EmpDetail() {
   const handleFormSubmit = async (event) => {
     console.log("update data : ", formData);
     event.preventDefault();
+    const bodyContent = `value=${JSON.stringify(formData)}`;
+    console.log(`value=${JSON.stringify(formData)}`);
     try {
       const response = await fetch(
-        `https://sst.mglt.workers.dev/js/editEK?id=${id}`,
+        `https://sst.mglt.workers.dev/editEK?id=${id}`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify(formData),
+          body: bodyContent,
         }
       );
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const data = await response.json();
-      console.log("After >>>", data);
+      const result = await response.json();
+      console.log("After >>>", result);
       navigate("/employee/all");
     } catch (error) {
       console.error("Error updating employee:", error);

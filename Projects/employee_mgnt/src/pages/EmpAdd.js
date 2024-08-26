@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 export default function EmpAdd() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [formData, setFormData] = useState({
+  const [value, setValue] = useState({
     id: "",
     name: "",
     position: "",
@@ -20,7 +20,7 @@ export default function EmpAdd() {
   });
 
   useEffect(() => {
-    setFormData({
+    setValue({
       id: "",
       name: "",
       position: "",
@@ -32,11 +32,11 @@ export default function EmpAdd() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
+    setValue((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    console.log(formData);
+    console.log(value);
   };
 
   const handleBackClick = () => {
@@ -45,22 +45,26 @@ export default function EmpAdd() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const bodyContent = `value=${JSON.stringify(value)}`;
+    console.log(`value=${JSON.stringify(value)}`);
     try {
-      const response = await fetch(`https://sst.mglt.workers.dev/addEK`, {
+      const response = await fetch("https://sst.mglt.workers.dev/addEK/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(formData),
+        body: bodyContent,
       });
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const data = await response.json();
-      console.log("After >>>", data);
+
+      const result = await response.json();
+      console.log("Success:", result);
       navigate("/employee/all");
     } catch (error) {
-      console.error("Error creating employee:", error);
+      console.error("Error:", error);
     }
   };
 
@@ -93,7 +97,7 @@ export default function EmpAdd() {
           <TextField
             fullWidth
             name="id"
-            value={formData.id}
+            value={value.id}
             onChange={handleInputChange}
           />
         </Grid>
@@ -104,7 +108,7 @@ export default function EmpAdd() {
           <TextField
             fullWidth
             name="name"
-            value={formData.name}
+            value={value.name}
             onChange={handleInputChange}
           />
         </Grid>
@@ -115,7 +119,7 @@ export default function EmpAdd() {
           <TextField
             fullWidth
             name="position"
-            value={formData.position || ""}
+            value={value.position || ""}
             onChange={handleInputChange}
           />
         </Grid>
@@ -126,7 +130,7 @@ export default function EmpAdd() {
           <TextField
             fullWidth
             name="department"
-            value={formData.department || ""}
+            value={value.department || ""}
             onChange={handleInputChange}
           />
         </Grid>
@@ -139,7 +143,7 @@ export default function EmpAdd() {
             name="birthdate"
             type="date"
             InputLabelProps={{ shrink: true }}
-            value={formData.birthdate}
+            value={value.birthdate}
             onChange={handleInputChange}
           />
         </Grid>
@@ -152,7 +156,7 @@ export default function EmpAdd() {
             name="start_date"
             type="date"
             InputLabelProps={{ shrink: true }}
-            value={formData.start_date || ""}
+            value={value.start_date || ""}
             onChange={handleInputChange}
           />
         </Grid>
