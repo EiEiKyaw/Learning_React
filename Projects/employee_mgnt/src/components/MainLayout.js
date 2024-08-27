@@ -22,7 +22,7 @@ export default function MainLayout() {
           p: 3,
           marginLeft: isSidebarOpen ? "220px" : "60px",
           marginTop: "64px",
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#fff",
           transition: "margin-left 0.3s",
         }}
       >

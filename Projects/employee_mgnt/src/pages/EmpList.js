@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Paper,
   Table,
   TableBody,
@@ -18,6 +25,8 @@ export default function EmpList() {
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [selectedData, setSelectedData] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -48,8 +57,25 @@ export default function EmpList() {
   const handleDetailClick = (id) => {
     navigate(`/employee/detail/${id}`);
   };
+
+  const handleDialogOpen = (employee) => {
+    setSelectedData(employee);
+    setOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpen(false);
+    setSelectedData(null);
+  };
+
+  const handleDelete = () => {
+    console.log("Deleting employee id:", selectedData?.id);
+    handleDialogClose();
+  };
+
   if (loading) return <p>Loading</p>;
   if (!data) return <p>No data available</p>;
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -86,14 +112,39 @@ export default function EmpList() {
                 <TableCell>
                   <EditIcon
                     sx={{ color: theme.palette.icon.main }}
-                    color="primary"
                     onClick={() => handleDetailClick(row.id)}
+                  />
+                  <DeleteIcon
+                    sx={{ color: theme.palette.icon.main, marginLeft: 1 }}
+                    onClick={() => handleDialogOpen(row)}
                   />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+
+        <Dialog
+          open={open}
+          onClose={handleDialogClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Confirm Delete"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to delete <b>'{selectedData?.name}'</b>?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose} variant="custom">
+              Cancel
+            </Button>
+            <Button onClick={handleDelete} variant="custom">
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       </TableContainer>
     </>
   );

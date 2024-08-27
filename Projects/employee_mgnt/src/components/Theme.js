@@ -6,9 +6,21 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: "#25655E",
-          color: "#ffffff",
+          color: "#fff",
           "&:hover": {
             backgroundColor: "#2f8077",
+            color: "#fff",
+          },
+        },
+        custom: {
+          backgroundColor: "#fff",
+          color: "#25655E",
+          fontWeight: "bold",
+          padding: 0,
+          "&:hover": {
+            backgroundColor: "#fff",
+            color: "#2f8077",
+            textDecoration: "underline",
           },
         },
       },

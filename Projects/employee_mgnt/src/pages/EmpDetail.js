@@ -98,7 +98,7 @@ export default function EmpDetail() {
         container
         spacing={2}
         sx={{
-          maxWidth: 600, // Set width
+          maxWidth: 600,
           width: "100%",
         }}
       >

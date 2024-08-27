@@ -13,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<MainLayout />}>
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/employee/all" element={<EmpList />} />
             <Route exact path="/employee/add" element={<EmpAdd />} />
