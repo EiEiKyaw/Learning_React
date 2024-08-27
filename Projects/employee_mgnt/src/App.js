@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import EmpDetail from "./pages/EmpDetail";
 import EmpAdd from "./pages/EmpAdd";
 import EmpList from "./pages/EmpList";
+import AppSettings from "./pages/AppSettings";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/employee/all" element={<EmpList />} />
             <Route exact path="/employee/add" element={<EmpAdd />} />
             <Route exact path="/employee/detail/:id" element={<EmpDetail />} />
+            <Route exact path="/setting" element={<AppSettings />} />
           </Route>
           <Route exact path="/login" element={<Login />} />
         </Routes>

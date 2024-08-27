@@ -19,7 +19,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const listItemStyle = {
   height: 50,
   "&:hover": {
-    backgroundColor: "#343a40", // Change background on hover
+    backgroundColor: "#343a40",
   },
 };
 
@@ -89,7 +89,7 @@ export default function Sidebar({ isOpen }) {
             </List>
           </Collapse>
         )}
-        <ListItemButton onClick={() => navigate("/")} sx={listItemStyle}>
+        <ListItemButton onClick={() => navigate("/setting")} sx={listItemStyle}>
           <ListItemIcon>
             <SettingsIcon sx={{ color: "#ffffff" }} />
           </ListItemIcon>
