@@ -31,7 +31,8 @@ export default function EmpList() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://sst.mglt.workers.dev/js/getEK.json"
+        "https://sst.mglt.workers.dev/js/getEK.json",
+        { cache: "no-store" }
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
