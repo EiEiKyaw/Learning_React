@@ -8,33 +8,21 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 
-const columns = [
-  { id: "no", label: "No", minWidth: 170 },
-  { id: "title", label: "Title", minWidth: 100 },
-  {
-    id: "description",
-    label: "Description",
-    minWidth: 170,
-  },
-  {
-    id: "value",
-    label: "Value",
-    minWidth: 170,
-  },
-  {
-    id: "created_date",
-    label: "Created Date",
-    minWidth: 170,
-  },
-];
-
-function createData(no, title, description, value, created_date) {
-  return { no, title, description, value, created_date };
-}
-
 const rows = [
-  createData(1, "Button Color", "Testing", "#000", "27 Aug, 2024"),
-  createData(2, "Text Color", "Testing", "#960606", "20 Aug, 2024"),
+  {
+    id: 1,
+    title: "Button Color",
+    description: "Testing",
+    value: "#000",
+    created_date: "27 Aug, 2024",
+  },
+  {
+    id: 2,
+    title: "Text Color",
+    description: "Testing",
+    value: "#565656",
+    created_date: "27 Aug, 2024",
+  },
 ];
 
 export default function AppSettings() {
@@ -60,21 +48,17 @@ export default function AppSettings() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
+              <TableCell>#</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Value</TableCell>
+              <TableCell>Created Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((row, index) => {
                 return (
                   <TableRow
                     hover
@@ -83,16 +67,11 @@ export default function AppSettings() {
                     key={row.no}
                     onClick={() => handleRowClick(row)}
                   >
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{row.title}</TableCell>
+                    <TableCell>{row.description}</TableCell>
+                    <TableCell>{row.value}</TableCell>
+                    <TableCell>{row.created_date}</TableCell>
                   </TableRow>
                 );
               })}
