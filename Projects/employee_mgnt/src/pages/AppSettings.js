@@ -7,8 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import AppSettingsDetail from "./AppSettingsDetail";
 
-const rows = [
+const initialData = [
   {
     id: 1,
     title: "Button Color",
@@ -28,6 +29,9 @@ const rows = [
 export default function AppSettings() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [selectedData, setSelectedData] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [rows, setRows] = useState(initialData);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -40,6 +44,20 @@ export default function AppSettings() {
 
   const handleRowClick = (row) => {
     console.log(row);
+    setSelectedData(row);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+    setSelectedData(null);
+  };
+
+  const handleSave = (updatedRow) => {
+    setRows((prevRows) =>
+      prevRows.map((row) => (row.id === updatedRow.id ? updatedRow : row))
+    );
+    handleCloseDialog();
   };
 
   return (
@@ -47,7 +65,7 @@ export default function AppSettings() {
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
-            <TableRow>
+            <TableRow key={rows.length}>
               <TableCell>#</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
@@ -81,12 +99,21 @@ export default function AppSettings() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={initialData.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+
+      {selectedData && (
+        <AppSettingsDetail
+          open={dialogOpen}
+          onClose={handleCloseDialog}
+          onSave={handleSave}
+          setting={selectedData}
+        />
+      )}
     </Paper>
   );
 }
