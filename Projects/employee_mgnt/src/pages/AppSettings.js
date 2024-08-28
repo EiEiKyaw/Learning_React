@@ -14,14 +14,14 @@ const initialData = [
     id: 1,
     title: "Button Color",
     description: "Testing",
-    value: "#000",
+    value: "C2",
     created_date: "27 Aug, 2024",
   },
   {
     id: 2,
     title: "Text Color",
     description: "Testing",
-    value: "#565656",
+    value: "C1",
     created_date: "27 Aug, 2024",
   },
 ];
@@ -54,9 +54,11 @@ export default function AppSettings() {
   };
 
   const handleSave = (updatedRow) => {
+    console.log("updatedRow", updatedRow);
     setRows((prevRows) =>
       prevRows.map((row) => (row.id === updatedRow.id ? updatedRow : row))
     );
+    console.log(rows);
     handleCloseDialog();
   };
 
@@ -65,7 +67,7 @@ export default function AppSettings() {
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
-            <TableRow key={rows.length}>
+            <TableRow>
               <TableCell>#</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
@@ -82,13 +84,17 @@ export default function AppSettings() {
                     hover
                     role="checkbox"
                     tabIndex={-1}
-                    key={row.no}
+                    key={row.id}
                     onClick={() => handleRowClick(row)}
                   >
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>{row.title}</TableCell>
                     <TableCell>{row.description}</TableCell>
-                    <TableCell>{row.value}</TableCell>
+                    <TableCell>
+                      {row.value === "C1"
+                        ? "#FFFFFF (White)"
+                        : "#000000 (Black)"}
+                    </TableCell>
                     <TableCell>{row.created_date}</TableCell>
                   </TableRow>
                 );

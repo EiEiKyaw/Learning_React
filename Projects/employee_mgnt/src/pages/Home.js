@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
-import theme from "../components/Theme";
 
 export default function ActionAreaCard() {
   return (
@@ -12,7 +11,7 @@ export default function ActionAreaCard() {
             variant="h5"
             component="div"
             sx={{
-              color: theme.palette.title.primary,
+              // color: theme.palette.title.primary,
               fontWeight: "bold",
               fontSize: "32px",
             }}

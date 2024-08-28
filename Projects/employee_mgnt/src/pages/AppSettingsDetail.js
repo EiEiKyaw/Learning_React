@@ -6,7 +6,9 @@ import {
   DialogTitle,
   TextField,
   Button,
+  MenuItem,
 } from "@mui/material";
+import { useThemeContext } from "../components/ThemeContext";
 
 export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
   const [formData, setFormData] = useState({
@@ -16,6 +18,7 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
     value: "",
     created_date: "",
   });
+  const { setThemeColor } = useThemeContext();
 
   useEffect(() => {
     if (setting) {
@@ -34,7 +37,9 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
   };
 
   const handleSave = () => {
-    onSave({ ...setting, ...formData });
+    onSave({ ...formData });
+    setThemeColor(formData.value);
+    console.log("saved ..... ", { ...formData });
   };
 
   return (
@@ -48,6 +53,10 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
           value={formData.title}
           onChange={handleChange}
           fullWidth
+          id="outlined-read-only-input"
+          InputProps={{
+            readOnly: true,
+          }}
         />
         <TextField
           margin="dense"
@@ -56,7 +65,24 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
           value={formData.description}
           onChange={handleChange}
           fullWidth
+          id="outlined-read-only-input"
+          InputProps={{
+            readOnly: true,
+          }}
         />
+        <TextField
+          select
+          margin="dense"
+          label="Select Color"
+          value={formData.value}
+          onChange={handleChange}
+          name="value"
+          fullWidth
+          id="outlined-select-currency"
+        >
+          <MenuItem value="C1">#000000 (Black)</MenuItem>
+          <MenuItem value="C2">#FFFFFF (White)</MenuItem>
+        </TextField>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">

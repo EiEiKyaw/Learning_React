@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
-import theme from "./Theme";
 
 const settings = ["Profile", "Logout"];
 
@@ -42,7 +41,7 @@ export default function NavBar({ toggleSidebar, isOpen }) {
   };
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: theme.palette.icon.main }}>
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton
           edge="start"
