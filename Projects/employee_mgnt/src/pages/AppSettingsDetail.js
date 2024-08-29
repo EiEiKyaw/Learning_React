@@ -15,10 +15,12 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
     id: null,
     title: "",
     description: "",
-    value: "",
-    created_date: "",
+    type: "",
+    fieldCode: "",
+    fieldValue: "",
   });
-  const { setThemeColor } = useThemeContext();
+  const { setThemeColor, setThemeBgColor, setIconColor, setTitle } =
+    useThemeContext();
 
   useEffect(() => {
     if (setting) {
@@ -26,8 +28,9 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
         id: setting.id,
         title: setting.title,
         description: setting.description,
-        value: setting.value,
-        created_date: setting.created_date,
+        type: setting.type,
+        fieldCode: setting.fieldCode,
+        fieldValue: setting.fieldValue,
       });
     }
   }, [setting]);
@@ -38,7 +41,17 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
 
   const handleSave = () => {
     onSave({ ...formData });
-    setThemeColor(formData.value);
+
+    if (formData.type === "Color") {
+      if (formData.fieldCode === "themeBgColor")
+        setThemeBgColor(formData.fieldValue);
+      if (formData.fieldCode === "themeColor")
+        setThemeColor(formData.fieldValue);
+      if (formData.fieldCode === "iconColor") setIconColor(formData.fieldValue);
+    } else if (formData.type === "Normal") {
+      if (formData.fieldCode === "title") setTitle(formData.fieldValue);
+    }
+
     console.log("saved ..... ", { ...formData });
   };
 
@@ -73,16 +86,39 @@ export default function AppSettingsDetail({ open, onClose, onSave, setting }) {
         <TextField
           select
           margin="dense"
-          label="Select Color"
-          value={formData.value}
+          label="Select Type"
+          value={formData.type}
           onChange={handleChange}
-          name="value"
+          name="type"
           fullWidth
           id="outlined-select-currency"
         >
-          <MenuItem value="C1">#000000 (Black)</MenuItem>
-          <MenuItem value="C2">#FFFFFF (White)</MenuItem>
+          <MenuItem value="Normal">Normal</MenuItem>
+          <MenuItem value="Color">Color</MenuItem>
         </TextField>
+        {/* <TextField
+          select
+          margin="dense"
+          label="Select Code"
+          value={formData.fieldCode}
+          onChange={handleChange}
+          name="fieldCode"
+          fullWidth
+          id="outlined-select-currency"
+        >
+          <MenuItem value="themeBgColor">Background Color</MenuItem>
+          <MenuItem value="themeColor">Text Color</MenuItem>
+          <MenuItem value="iconColor">Icon Color</MenuItem>
+        </TextField> */}
+        <TextField
+          margin="dense"
+          label="Field Value"
+          name="fieldValue"
+          type="text"
+          value={formData.fieldValue}
+          onChange={handleChange}
+          fullWidth
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">

@@ -4,7 +4,21 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const ThemeContext = createContext();
 
 export function ThemeProviderWrapper({ children }) {
-  const [themeColor, setThemeColor] = useState("#25655E");
+  const [themeColor, setThemeColor] = useState("#FFFFFF");
+  const [themeBgColor, setThemeBgColor] = useState("#25655E");
+  const [iconColor, setIconColor] = useState("#25655E");
+  const [title, setTitle] = useState("Hello World !!!");
+
+  console.log(
+    "color ...",
+    themeColor,
+    " ... bg color ...",
+    themeBgColor,
+    " ... icon color ... ",
+    iconColor,
+    " ... title ... ",
+    title
+  );
 
   const theme = useMemo(
     () =>
@@ -13,11 +27,11 @@ export function ThemeProviderWrapper({ children }) {
           MuiButton: {
             styleOverrides: {
               root: {
-                backgroundColor: themeColor,
-                color: "#fff",
+                backgroundColor: themeBgColor,
+                color: themeColor,
                 "&:hover": {
-                  backgroundColor: themeColor,
-                  color: "#fff",
+                  backgroundColor: themeBgColor,
+                  color: themeColor,
                 },
               },
               custom: {
@@ -36,26 +50,30 @@ export function ThemeProviderWrapper({ children }) {
           MuiAppBar: {
             styleOverrides: {
               root: {
-                backgroundColor: themeColor,
+                backgroundColor: themeBgColor,
+                color: themeColor,
               },
             },
           },
         },
         palette: {
           icon: {
-            main: themeColor,
+            main: iconColor,
             hover: "#e64a19",
           },
           title: {
             primary: themeColor,
+            bgColor: themeBgColor,
           },
         },
       }),
-    [themeColor]
+    [themeColor, themeBgColor, iconColor]
   );
 
   return (
-    <ThemeContext.Provider value={{ setThemeColor }}>
+    <ThemeContext.Provider
+      value={{ setThemeColor, setThemeBgColor, setIconColor, title, setTitle }}
+    >
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );

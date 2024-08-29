@@ -15,13 +15,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  useTheme,
 } from "@mui/material";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-// import theme from "../components/Theme";
 
 export default function EmpList() {
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,6 @@ export default function EmpList() {
         throw new Error("Network response was not ok");
       }
       const res = await response.json();
-      console.log(res);
       setData(res["employee"]);
     } catch (error) {
       console.log("Error fetching data:", error);
@@ -69,8 +69,28 @@ export default function EmpList() {
     setSelectedData(null);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async (event) => {
     console.log("Deleting employee id:", selectedData?.id);
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        `https://sst.mglt.workers.dev/deleteEK?id=${selectedData?.id}`,
+        {
+          method: "POST",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      setData((prevData) =>
+        prevData.filter((item) => item.id !== selectedData.id)
+      );
+
+      await response.json();
+    } catch (error) {
+      console.error("Error deleting employee:", error);
+    }
     handleDialogClose();
   };
 
@@ -112,11 +132,11 @@ export default function EmpList() {
                 </TableCell>
                 <TableCell>
                   <EditIcon
-                    // sx={{ color: theme.palette.icon.main }}
+                    sx={{ color: theme.palette.icon.main }}
                     onClick={() => handleDetailClick(row.id)}
                   />
                   <DeleteIcon
-                    sx={{ marginLeft: 1 }}
+                    sx={{ color: theme.palette.icon.main, marginLeft: 1 }}
                     onClick={() => handleDialogOpen(row)}
                   />
                 </TableCell>
@@ -138,10 +158,18 @@ export default function EmpList() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleDialogClose} variant="custom">
+            <Button
+              sx={{ color: theme.palette.icon.main }}
+              onClick={handleDialogClose}
+              variant="custom"
+            >
               Cancel
             </Button>
-            <Button onClick={handleDelete} variant="custom">
+            <Button
+              sx={{ color: theme.palette.icon.main }}
+              onClick={handleDelete}
+              variant="custom"
+            >
               Delete
             </Button>
           </DialogActions>

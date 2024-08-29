@@ -12,17 +12,35 @@ import AppSettingsDetail from "./AppSettingsDetail";
 const initialData = [
   {
     id: 1,
-    title: "Button Color",
+    title: "Background Color",
     description: "Testing",
-    value: "C2",
-    created_date: "27 Aug, 2024",
+    type: "Color",
+    fieldCode: "themeBgColor",
+    fieldValue: "#25655E",
   },
   {
     id: 2,
     title: "Text Color",
     description: "Testing",
-    value: "C1",
-    created_date: "27 Aug, 2024",
+    type: "Color",
+    fieldCode: "themeColor",
+    fieldValue: "#FFFFFF",
+  },
+  {
+    id: 3,
+    title: "Icon Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "iconColor",
+    fieldValue: "#000000",
+  },
+  {
+    id: 4,
+    title: "Title Name",
+    description: "Testing",
+    type: "Normal",
+    fieldCode: "title",
+    fieldValue: "Employee Management",
   },
 ];
 
@@ -71,8 +89,9 @@ export default function AppSettings() {
               <TableCell>#</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Description</TableCell>
-              <TableCell>Value</TableCell>
-              <TableCell>Created Date</TableCell>
+              <TableCell>Type</TableCell>
+              <TableCell>Field Code</TableCell>
+              <TableCell>Field Value</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -90,12 +109,9 @@ export default function AppSettings() {
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>{row.title}</TableCell>
                     <TableCell>{row.description}</TableCell>
-                    <TableCell>
-                      {row.value === "C1"
-                        ? "#FFFFFF (White)"
-                        : "#000000 (Black)"}
-                    </TableCell>
-                    <TableCell>{row.created_date}</TableCell>
+                    <TableCell>{row.type}</TableCell>
+                    <TableCell>{row.fieldCode}</TableCell>
+                    <TableCell>{row.fieldValue}</TableCell>
                   </TableRow>
                 );
               })}
