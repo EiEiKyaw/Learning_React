@@ -2,12 +2,13 @@ import { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import AppSettingsDetail from "./AppSettingsDetail";
+import { styled } from "@mui/material/styles";
 
 const initialData = [
   {
@@ -84,6 +85,25 @@ const initialData = [
   },
 ];
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    // backgroundColor: theme.palette.common.black,
+    // color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
 export default function AppSettings() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -125,35 +145,33 @@ export default function AppSettings() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell>#</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Field Code</TableCell>
-              <TableCell>Field Value</TableCell>
+              <StyledTableCell>#</StyledTableCell>
+              <StyledTableCell>Title</StyledTableCell>
+              <StyledTableCell>Description</StyledTableCell>
+              <StyledTableCell>Type</StyledTableCell>
+              <StyledTableCell>Field Code</StyledTableCell>
+              <StyledTableCell>Field Value</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.id}
-                    onClick={() => handleRowClick(row)}
-                  >
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{row.title}</TableCell>
-                    <TableCell>{row.description}</TableCell>
-                    <TableCell>{row.type}</TableCell>
-                    <TableCell>{row.fieldCode}</TableCell>
-                    <TableCell>{row.fieldValue}</TableCell>
-                  </TableRow>
-                );
-              })}
+              .map((row, index) => (
+                <StyledTableRow
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={row.id}
+                  onClick={() => handleRowClick(row)}
+                >
+                  <StyledTableCell>{index + 1}</StyledTableCell>
+                  <StyledTableCell>{row.title}</StyledTableCell>
+                  <StyledTableCell>{row.description}</StyledTableCell>
+                  <StyledTableCell>{row.type}</StyledTableCell>
+                  <StyledTableCell>{row.fieldCode}</StyledTableCell>
+                  <StyledTableCell>{row.fieldValue}</StyledTableCell>
+                </StyledTableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
