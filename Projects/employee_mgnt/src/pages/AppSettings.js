@@ -12,15 +12,15 @@ import AppSettingsDetail from "./AppSettingsDetail";
 const initialData = [
   {
     id: 1,
-    title: "Background Color",
-    description: "Testing",
+    title: "General Background Color",
+    description: "Button",
     type: "Color",
     fieldCode: "themeBgColor",
     fieldValue: "#25655E",
   },
   {
     id: 2,
-    title: "Text Color",
+    title: "General Text Color",
     description: "Testing",
     type: "Color",
     fieldCode: "themeColor",
@@ -28,7 +28,7 @@ const initialData = [
   },
   {
     id: 3,
-    title: "Icon Color",
+    title: "General Icon Color",
     description: "Testing",
     type: "Color",
     fieldCode: "iconColor",
@@ -36,11 +36,51 @@ const initialData = [
   },
   {
     id: 4,
-    title: "Title Name",
+    title: "Project Name",
     description: "Testing",
     type: "Normal",
-    fieldCode: "title",
-    fieldValue: "Employee Management",
+    fieldCode: "prjTitle",
+    fieldValue: "A-KEE",
+  },
+  {
+    id: 5,
+    title: "Sidebar Text/Icon Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "sbColor",
+    fieldValue: "#FFFFFF",
+  },
+  {
+    id: 6,
+    title: "Sidebar Background Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "sbBgColor",
+    fieldValue: "#212529",
+  },
+  {
+    id: 7,
+    title: "Appbar Text Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "abColor",
+    fieldValue: "#FFFFFF",
+  },
+  {
+    id: 8,
+    title: "Appbar Background Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "abBgColor",
+    fieldValue: "#25655E",
+  },
+  {
+    id: 9,
+    title: "Table Header Color",
+    description: "Testing",
+    type: "Color",
+    fieldCode: "headerColor",
+    fieldValue: "#25655E",
   },
 ];
 
@@ -76,13 +116,12 @@ export default function AppSettings() {
     setRows((prevRows) =>
       prevRows.map((row) => (row.id === updatedRow.id ? updatedRow : row))
     );
-    console.log(rows);
     handleCloseDialog();
   };
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ minHeight: 400 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
